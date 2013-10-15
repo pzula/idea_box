@@ -29,6 +29,12 @@ class Idea
     end
   end
 
+  def self.delete(position)
+    database.transaction do
+      database['ideas'].delete_at(position)
+    end
+  end
+
   def self.database
     @database ||=  YAML::Store.new "ideabox"
   end
