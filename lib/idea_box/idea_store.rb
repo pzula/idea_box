@@ -12,8 +12,8 @@ class IdeaStore
 
   def self.all
     ideas = []
-    raw_ideas.each_with_index do |data, i|
-      ideas << Idea.new(data.merge("id" => i))
+    raw_ideas.each do |data|
+      ideas << Idea.new(data)
     end
     ideas
   end
@@ -50,9 +50,11 @@ class IdeaStore
     end
   end
 
-  def self.delete(position)
-    database.transaction do
-
+  def self.delete(id)
+    database.transaction do |db|
+      # raw_idea = db['ideas'].find do |idea|
+      #   idea["id"] == id
+      # end
     end
   end
 
