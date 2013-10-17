@@ -1,5 +1,4 @@
 require 'yaml/store'
-require 'pry'
 
 class IdeaStore
 
