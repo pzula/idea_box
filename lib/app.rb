@@ -1,4 +1,4 @@
-require 'idea_box'
+require './idea_box'
 
 class IdeaBoxApp < Sinatra::Base
   set :method_override, true
