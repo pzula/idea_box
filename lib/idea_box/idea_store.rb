@@ -16,6 +16,10 @@ class IdeaStore
     ideas
   end
 
+  def self.size
+    raw_ideas.length
+  end
+
   def self.find(id)
     raw_idea = find_raw_idea(id)
     Idea.new(raw_idea.merge("id" => id))

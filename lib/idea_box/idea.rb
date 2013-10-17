@@ -6,7 +6,11 @@ class Idea
     @title = attributes["title"]
     @description = attributes["description"]
     @rank = attributes["rank"] || 0
-    @id = attributes["id"]
+    @id = attributes["id"] || next_id
+  end
+
+  def next_id
+    IdeaStore.size + 1
   end
 
   def save

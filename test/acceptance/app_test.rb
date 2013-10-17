@@ -16,4 +16,9 @@ class AppTest < Minitest::Test
     assert IdeaBoxApp
   end
 
+  def test_homepage_route_returns_ok
+    get '/'
+    assert last_response.ok?
+  end
+
 end
