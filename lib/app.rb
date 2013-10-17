@@ -1,4 +1,6 @@
-require './idea_box'
+require 'sinatra/base'
+require 'sinatra/reloader'
+require './lib/idea_box'
 
 class IdeaBoxApp < Sinatra::Base
   set :method_override, true
