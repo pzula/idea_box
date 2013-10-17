@@ -28,8 +28,10 @@ class IdeaStore
   end
 
   def self.find_raw_idea(id)
-    database.transaction do
-      database['ideas'].at(id)
+    database.transaction do |db|
+      db['ideas'].find do |idea|
+        idea["id"] == id
+      end
     end
   end
 
@@ -40,21 +42,17 @@ class IdeaStore
   end
 
   def self.update(id, data)
+    i = raw_ideas.index(find_raw_idea(id))
     database.transaction do |db|
-      raw_idea = db['ideas'].find do |idea|
-        idea["id"] == id
-      end
-      i = db['ideas'].index(raw_idea)
       db['ideas'][i] = data.merge("id" => data["id"].to_i,
                                   "rank" => data["rank"].to_i)
     end
   end
 
   def self.delete(id)
+    i = raw_ideas.index(find_raw_idea(id))
     database.transaction do |db|
-      # raw_idea = db['ideas'].find do |idea|
-      #   idea["id"] == id
-      # end
+      db['ideas'].delete_at(i)
     end
   end
 

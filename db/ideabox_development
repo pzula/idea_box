@@ -1,10 +1,6 @@
 ---
 ideas:
-- title: second
-  description: idea!!
+- id: 0
   rank: 2
-  id: 0
-- id: 2
-  rank: 0
-  title: second
-  description: idea!!
+  title: another
+  description: idea! Yay!
