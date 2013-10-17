@@ -8,6 +8,8 @@
   </p>
   <% if idea.id %>
  	<input type="hidden" name="_method" value="PUT" />
+  <input type="hidden" name="idea[id]" value="<%= idea.id %>" />
+  <input type="hidden" name="idea[rank]" value="<%= idea.rank %>" />
   <% end %>
   <input type='text' name='idea[title]' value="<%= idea.title %>"/><br/>
   <textarea name='idea[description]'><%= idea.description %></textarea><br/>
