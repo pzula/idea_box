@@ -5,8 +5,10 @@ class IdeaStore
 
   def self.create(data)
     id = next_id
+    data["id"] = next_id if data["id"].nil?
+    data["rank"] = 0 if data["rank"].nil?
     database.transaction do
-      database['ideas'] << data.merge("id" => id, "rank" => 0)
+      database['ideas'] << data
     end
   end
 
