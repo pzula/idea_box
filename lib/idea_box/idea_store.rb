@@ -48,11 +48,15 @@ class IdeaStore
   def self.database
     return @database if @database
 
-    @database =  YAML::Store.new("db/ideabox")
+    @database =  YAML::Store.new("db/ideabox_#{environment}")
     @database.transaction do
       @database['ideas'] ||= []
     end
     @database
+  end
+
+  def self.environment
+    ENV["RACK_ENV"] || "development"
   end
 
 end
