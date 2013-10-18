@@ -68,11 +68,13 @@ class IdeaTest < Minitest::Test
     assert_equal 1, IdeaStore.all.first.rank
   end
 
+  def test_that_it_gets_deleted
+    IdeaStore.delete(1)
+    assert_equal 0, IdeaStore.all.count
+  end
 
   def test_it_sorts_multiple_objects_on_rank
     skip
   end
-
-
 
 end
