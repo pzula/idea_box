@@ -2,8 +2,13 @@ gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/idea_box/idea.rb'
+require './lib/idea_box/idea_store.rb'
 
 class IdeaTest < Minitest::Test
+
+  def teardown
+    IdeaStore.destroy
+  end
 
   def test_it_can_initialize_on_a_hash_of_data
     data = { "title" => "New idea!",
@@ -13,6 +18,27 @@ class IdeaTest < Minitest::Test
     assert_equal "New idea!", idea.title
     assert_equal "Really awesome app", idea.description
     assert_equal 0, idea.rank
+  end
+
+  def test_it_can_save
+    data = { "title" => "New idea!",
+           "description" => "Really awesome app"
+          }
+    idea = Idea.new(data)
+    idea.save
+    assert_equal "New idea!", IdeaStore.all.first.title
+  end
+
+  def test_it_can_update
+    data = { "title" => "New idea!",
+           "description" => "Really awesome app"
+          }
+    idea = Idea.new(data)
+    idea.save
+    idea = IdeaStore.all.first
+    idea.title = "A really cool idea"
+    idea.update
+    assert_equal "A really cool idea", idea.title
   end
 
   def test_it_increments_rank_on_like

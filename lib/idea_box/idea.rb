@@ -1,6 +1,6 @@
 class Idea
 
-  attr_reader :title, :description, :rank, :id
+  attr_accessor :title, :description, :rank, :id
 
   def initialize(attributes = {})
     @title = attributes["title"]
@@ -20,6 +20,10 @@ class Idea
       "description" => description,
       "rank" => rank
     }
+  end
+
+  def update
+    IdeaStore.update(id, to_h)
   end
 
   def like!

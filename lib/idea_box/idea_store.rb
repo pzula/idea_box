@@ -1,4 +1,5 @@
 require 'yaml/store'
+require './lib/idea_box/idea'
 
 class IdeaStore
 
@@ -12,11 +13,9 @@ class IdeaStore
   end
 
   def self.all
-    ideas = []
-    raw_ideas.each do |data|
-      ideas << Idea.new(data)
+    raw_ideas.map do |data|
+      Idea.new(data)
     end
-    ideas
   end
 
   def self.next_id
@@ -45,7 +44,7 @@ class IdeaStore
   def self.update(id, data)
     i = raw_ideas.index(find_raw_idea(id))
     database.transaction do |db|
-      db['ideas'][i] = data.merge("id" => data["id"].to_i,
+      db['ideas'][i] = data.merge("id" => id,
                                   "rank" => data["rank"].to_i)
     end
   end
@@ -69,6 +68,12 @@ class IdeaStore
 
   def self.environment
     ENV["RACK_ENV"] || "development"
+  end
+
+  def self.destroy
+    database.transaction do |db|
+      db['ideas'] = []
+    end
   end
 
 end
