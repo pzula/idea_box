@@ -20,7 +20,7 @@ class Idea
       "title" => title,
       "description" => description,
       "rank" => rank,
-      "tags" => tags
+      "tags" => tags.join(",")
     }
   end
 
@@ -33,7 +33,7 @@ class Idea
   end
 
   def format_tags(tags)
-    tags.gsub(/\s+/, "").split(",")
+    tags.downcase.gsub(/\s+/, "").split(",")
   end
 
   def update

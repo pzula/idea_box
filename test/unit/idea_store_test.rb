@@ -59,6 +59,15 @@ class IdeaTest < MiniTest::Unit::TestCase
     assert_equal 2, IdeaStore.find(2).rank
   end
 
+  def test_it_can_update_tags_properly
+    IdeaStore.create(sample_data.merge("id" => 2,
+                                       "tags" => "new_tag, better_tag"))
+    assert_equal ["new_tag", "better_tag"], IdeaStore.find(2).tags
+    IdeaStore.update(2, "title" => "Even better idea",
+                        "tags" => "new_tag, Best_tag")
+    assert_equal ["new_tag", "best_tag"], IdeaStore.find(2).tags
+  end
+
   def test_that_likes_are_persisted
     idea = IdeaStore.all.first
     idea.like!
@@ -71,7 +80,7 @@ class IdeaTest < MiniTest::Unit::TestCase
     assert_equal 0, IdeaStore.all.count
   end
 
-  def test_it_can_find_all_ideas_with_certain_tag
+  def test_it_can_find_all_ideas_with_certain_tag_regardless_of_case
     IdeaStore.create(sample_data.merge("tags" => "app,
                                                   new_tech,
                                                   lifestyle"))
@@ -79,12 +88,12 @@ class IdeaTest < MiniTest::Unit::TestCase
                       "description" => "Use menu generator",
                       "tags" => "food,
                         cooking,
-                        quantified_self,
+                        Quantified_Self,
                         lifestyle,
                         new_tech")
     assert_equal 2, IdeaStore.find_all_by_tag("new_tech").count
     assert_equal 2, IdeaStore.find_all_by_tag("lifestyle").count
-    assert_equal 1, IdeaStore.find_all_by_tag("app").count
+    assert_equal 1, IdeaStore.find_all_by_tag("App").count
     assert_equal 1, IdeaStore.find_all_by_tag("cooking").count
     assert_equal 1, IdeaStore.find_all_by_tag("quantified_self").count
   end

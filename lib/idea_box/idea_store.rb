@@ -37,7 +37,7 @@ class IdeaStore
 
   def self.find_all_by_tag(tag)
     all.select do |idea|
-      idea.tags.include?(tag)
+      idea.tags.include?(tag.downcase)
     end
   end
 

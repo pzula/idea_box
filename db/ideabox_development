@@ -1,17 +1,17 @@
 ---
 ideas:
-- title: A great
-  description: Idea
-  tags: new_idea, ideas
-  id: 1
-  rank: 0
-- title: A better idea
-  description: Is this one
-  tags: ideas
-  id: 2
-  rank: 0
-- title: This one
-  description: is even better
-  tags: best_idea
-  id: 3
-  rank: 0
+- id: 1
+  title: A new idea
+  description: With fresh tags
+  rank: 1
+  tags: tag_1,tag_2
+- id: 2
+  title: Another idea
+  description: to test tags
+  rank: 1
+  tags: again,you_know,yeah
+- id: 3
+  title: New idea again
+  description: another new idea
+  rank: 2
+  tags: new_tag,new_idea,tag_1

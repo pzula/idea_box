@@ -13,6 +13,10 @@
   <% end %>
   <input type='text' name='idea[title]' value="<%= idea.title %>"/><br/>
   <textarea name='idea[description]'><%= idea.description %></textarea><br/>
-  <input type='text' name='idea[tags]' value=""/><br/>
+  <% if idea.id %>
+    <input type='text' name='idea[tags]' value="<%= idea.tags.join(", ") %>"/><br/>
+  <% else %>
+    <input type='text' name='idea[tags]' value=""/><br/>
+  <% end %>
   <input type='submit' value='Save'/>
 </form>
