@@ -89,5 +89,29 @@ class IdeaTest < MiniTest::Unit::TestCase
     assert_equal 1, IdeaStore.find_all_by_tag("quantified_self").count
   end
 
+  def test_it_can_find_all_ideas_sorted_by_tag_alphabetically
+    IdeaStore.create(sample_data.merge("tags" => "app,
+                                                  new_tech,
+                                                  lifestyle"))
+    IdeaStore.create(sample_data.merge("tags" => "food,
+                        cooking,
+                        quantified_self"))
+    assert_equal 6, IdeaStore.all_tags.count
+    assert_equal ["app", "cooking", "food", "lifestyle", "new_tech", "quantified_self"], IdeaStore.all_tags
+  end
+
+  def test_all_tags_only_counts_tag_once
+    IdeaStore.create(sample_data.merge("tags" => "app,
+                                                  new_tech,
+                                                  lifestyle"))
+    IdeaStore.create( "title" => "Dinner",
+                      "description" => "Use menu generator",
+                      "tags" => "food,
+                        cooking,
+                        quantified_self,
+                        lifestyle,
+                        new_tech")
+    assert_equal ["app", "cooking", "food", "lifestyle", "new_tech", "quantified_self"], IdeaStore.all_tags
+  end
 
 end

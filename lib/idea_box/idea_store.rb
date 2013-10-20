@@ -18,6 +18,14 @@ class IdeaStore
     end
   end
 
+  def self.all_tags
+    all.map do |idea|
+      idea.tags.map do |tag|
+        tag
+      end
+    end.flatten.sort.uniq
+  end
+
   def self.next_id
     raw_ideas.length + 1
   end
