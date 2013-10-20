@@ -1,6 +1,4 @@
-gem 'minitest'
-require 'minitest/autorun'
-require 'minitest/pride'
+require './test/test_helper'
 require './lib/idea_box/idea.rb'
 require './lib/idea_box/idea_store.rb'
 

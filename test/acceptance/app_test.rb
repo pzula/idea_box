@@ -1,7 +1,5 @@
 ENV["RACK_ENV"] = "test"
-gem 'minitest'
-require 'minitest/autorun'
-require 'minitest/pride'
+require './test/test_helper'
 require 'rack/test'
 require './lib/app.rb'
 
