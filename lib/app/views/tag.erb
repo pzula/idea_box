@@ -1,11 +1,6 @@
+	<h1>All ideas tagged with "<%= tag %>"</h1>
 
-    <h1>IdeaBox</h1>
-
-    <%= erb :form, locals: {idea: idea} %>
-
-    <h3>Existing Ideas</h3>
-
-    <ul>
+	<ul>
       <% ideas.each do |idea| %>
         <li>
           <%= idea.title %><br/>
@@ -25,4 +20,3 @@
         </li>
       <% end %>
     </ul>
-

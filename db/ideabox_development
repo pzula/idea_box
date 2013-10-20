@@ -1,2 +1,17 @@
 ---
-ideas: []
+ideas:
+- title: A great
+  description: Idea
+  tags: new_idea, ideas
+  id: 1
+  rank: 0
+- title: A better idea
+  description: Is this one
+  tags: ideas
+  id: 2
+  rank: 0
+- title: This one
+  description: is even better
+  tags: best_idea
+  id: 3
+  rank: 0
