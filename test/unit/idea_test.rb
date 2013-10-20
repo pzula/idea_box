@@ -26,7 +26,7 @@ class IdeaTest < Minitest::Test
           }
     idea = Idea.new(data)
     idea.save
-    assert_equal "New idea!", IdeaStore.all.first.title
+    assert_equal "New idea!", IdeaStore.all.last.title
   end
 
   def test_it_can_update
@@ -62,5 +62,21 @@ class IdeaTest < Minitest::Test
     idea2 = Idea.new({ "rank" => 6 })
     assert_equal [idea2, idea1], [idea1, idea2].sort
   end
+
+  def test_ideas_can_be_sorted_by_rank
+    skip
+    diet = Idea.new({ "title" => "diet", "description" => "cabbage soup"})
+    exercise = Idea.new({"title" => "exercise", "description" => "long distance running"})
+    drink = Idea.new({"title" => "drink", "description" => "carrot smoothy"})
+
+    exercise.like!
+    exercise.like!
+    drink.like!
+
+    ideas = [diet, exercise, drink]
+
+    assert_equal [diet, drink, exercise], ideas.sort
+  end
+
 
 end

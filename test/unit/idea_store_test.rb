@@ -73,8 +73,4 @@ class IdeaTest < Minitest::Test
     assert_equal 0, IdeaStore.all.count
   end
 
-  def test_it_sorts_multiple_objects_on_rank
-    skip
-  end
-
 end
