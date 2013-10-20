@@ -2,7 +2,7 @@ require './test/test_helper'
 require './lib/idea_box/idea.rb'
 require './lib/idea_box/idea_store.rb'
 
-class IdeaTest < Minitest::Test
+class IdeaTest < MiniTest::Unit::TestCase
 
   def teardown
     IdeaStore.destroy

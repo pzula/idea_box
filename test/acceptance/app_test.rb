@@ -3,7 +3,7 @@ require './test/test_helper'
 require 'rack/test'
 require './lib/app.rb'
 
-class AppTest < Minitest::Test
+class AppTest < MiniTest::Unit::TestCase
   include Rack::Test::Methods
 
   def app
