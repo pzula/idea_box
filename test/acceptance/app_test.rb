@@ -19,4 +19,21 @@ class AppTest < Minitest::Test
     assert last_response.ok?
   end
 
+  def test_idea_list
+    IdeaStore.create({"title" => "dinner", "description" => "spaghetti and meatballs"})
+    IdeaStore.create({"title" => "drinks", "description" => "imported beers"})
+    IdeaStore.create({"title" => "movie", "description" => "The Matrix"})
+
+    get '/'
+
+    [
+      /dinner/, /spaghetti/,
+      /drinks/, /imported beers/,
+      /movie/, /The Matrix/
+    ].each do |content|
+      assert_match content, last_response.body
+    end
+  end
+
+
 end
