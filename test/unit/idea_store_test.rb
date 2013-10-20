@@ -71,4 +71,23 @@ class IdeaTest < MiniTest::Unit::TestCase
     assert_equal 0, IdeaStore.all.count
   end
 
+  def test_it_can_find_all_ideas_with_certain_tag
+    IdeaStore.create(sample_data.merge("tags" => "app,
+                                                  new_tech,
+                                                  lifestyle"))
+    IdeaStore.create( "title" => "Dinner",
+                      "description" => "Use menu generator",
+                      "tags" => "food,
+                        cooking,
+                        quantified_self,
+                        lifestyle,
+                        new_tech")
+    assert_equal 2, IdeaStore.find_all_by_tag("new_tech").count
+    assert_equal 2, IdeaStore.find_all_by_tag("lifestyle").count
+    assert_equal 1, IdeaStore.find_all_by_tag("app").count
+    assert_equal 1, IdeaStore.find_all_by_tag("cooking").count
+    assert_equal 1, IdeaStore.find_all_by_tag("quantified_self").count
+  end
+
+
 end

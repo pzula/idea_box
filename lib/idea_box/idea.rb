@@ -7,6 +7,7 @@ class Idea
     @description = attributes["description"]
     @rank = attributes["rank"] || 0
     @id = attributes["id"]
+    @tags = attributes["tags"]
   end
 
   def save
@@ -18,8 +19,21 @@ class Idea
       "id" => id,
       "title" => title,
       "description" => description,
-      "rank" => rank
+      "rank" => rank,
+      "tags" => tags
     }
+  end
+
+  def tags
+    if @tags
+      format_tags(@tags)
+    else
+      []
+    end
+  end
+
+  def format_tags(tags)
+    tags.gsub(/\s+/, "").split(",")
   end
 
   def update

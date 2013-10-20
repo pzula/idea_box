@@ -76,5 +76,19 @@ class IdeaTest < MiniTest::Unit::TestCase
     assert_equal [diet, drink, exercise], ideas.sort
   end
 
+  def test_ideas_can_be_tagged
+    idea = Idea.new({"tags" => "exercise, health,
+                                weight_training"})
+    assert_equal 3, idea.tags.count
+  end
+
+  def test_ideas_return_stripped_of_excess_white_space
+    idea = Idea.new({"tags" => "exercise, health,
+                                weight_training"})
+    assert_equal "exercise", idea.tags[0]
+    assert_equal "health", idea.tags[1]
+    assert_equal "weight_training", idea.tags[2]
+  end
+
 
 end

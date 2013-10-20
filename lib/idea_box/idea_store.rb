@@ -27,6 +27,12 @@ class IdeaStore
     Idea.new(raw_idea)
   end
 
+  def self.find_all_by_tag(tag)
+    all.select do |idea|
+      idea.tags.include?(tag)
+    end
+  end
+
   def self.find_raw_idea(id)
     database.transaction do |db|
       db['ideas'].find do |idea|
