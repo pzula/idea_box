@@ -123,4 +123,18 @@ class IdeaTest < MiniTest::Unit::TestCase
     assert_equal ["app", "cooking", "food", "lifestyle", "new_tech", "quantified_self"], IdeaStore.all_tags
   end
 
+  def test_it_can_find_ideas_based_on_a_phrase
+    IdeaStore.create(sample_data)
+    IdeaStore.create("title" => "Clean the house",
+                     "description" => "And the cooler")
+    IdeaStore.create("title" => "clean the car",
+                     "description" => "And vaccum the seats",
+                     "tags" => "Subaru")
+    assert_equal 2, IdeaStore.search("CLEAN").count
+    assert_equal 2, IdeaStore.search("cooler").count
+    assert_equal 2, IdeaStore.search("clean the").count
+    assert_equal 1, IdeaStore.search("vaccum").count
+    assert_equal 1, IdeaStore.search("subaru").count
+  end
+
 end

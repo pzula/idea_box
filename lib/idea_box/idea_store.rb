@@ -41,6 +41,12 @@ class IdeaStore
     end
   end
 
+  def self.search(phrase)
+    all.select do |idea|
+      idea.title.downcase.match(/#{phrase.downcase}/) || idea.description.downcase.match(/#{phrase.downcase}/) || idea.tags.join(",").downcase.match(/#{phrase.downcase}/)
+    end
+  end
+
   def self.find_raw_idea(id)
     database.transaction do |db|
       db['ideas'].find do |idea|
