@@ -62,7 +62,6 @@ class IdeaTest < MiniTest::Unit::TestCase
   end
 
   def test_ideas_can_be_sorted_by_rank
-    skip
     diet = Idea.new({ "title" => "diet", "description" => "cabbage soup"})
     exercise = Idea.new({"title" => "exercise", "description" => "long distance running"})
     drink = Idea.new({"title" => "drink", "description" => "carrot smoothy"})
@@ -73,7 +72,7 @@ class IdeaTest < MiniTest::Unit::TestCase
 
     ideas = [diet, exercise, drink]
 
-    assert_equal [diet, drink, exercise], ideas.sort
+    assert_equal [exercise, drink, diet], ideas.sort
   end
 
   def test_ideas_can_be_tagged

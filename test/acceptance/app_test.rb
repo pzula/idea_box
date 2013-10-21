@@ -36,10 +36,9 @@ class AppTest < MiniTest::Unit::TestCase
   end
 
   def test_create_idea
-    skip
-    post '/', {"title" => "costume", "description" => "scary vampire"}
+    post '/', idea: {title: 'costume', description: "scary vampire"}
 
-    assert_equal 1, IdeaStore.count
+    assert_equal 1, IdeaStore.all.count
 
     idea = IdeaStore.all.first
     assert_equal "costume", idea.title
