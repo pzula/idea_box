@@ -1,27 +1,32 @@
 
-    <h1>IdeaBox</h1>
-
     <%= erb :form, locals: {idea: idea} %>
 
     <h3>Existing Ideas</h3>
 
-    <ul>
+    <ul class="ideas">
       <% ideas.each do |idea| %>
         <li>
-          <%= idea.title %><br/>
-          <%= idea.description %><br/>
-          <% idea.tags.each do |tag| %>
-              <a href='/tag/<%= tag %>' class='tag'><%= tag %></a>
-          <% end %>
-          <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
-            <input type='submit' value="+"/>
-          </form>
+          <div class="idea_content">
+            <span class="title"><%= idea.title %></span><br/>
+            <span class="description"><%= idea.description %></span><br/>
+            <ul class="tags">
+              <% idea.tags.each do |tag| %>
+                  <li><a href='/tag/<%= tag %>' class='tag'><%= tag %></a></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="idea_controls">
+            <form action="/<%= idea.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" class="delete" value="" />
+            </form>
 
-          <a href="/<%= idea.id %>/edit">Edit</a>
-          <form action="/<%= idea.id %>" method="POST">
-            <input type="hidden" name="_method" value="DELETE">
-            <input type="submit" value="delete" />
-          </form>
+            <a href="/<%= idea.id %>/edit" class="edit"></a>
+
+            <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
+              <input type='submit' class="like" value=""/>
+            </form>
+          </div>
         </li>
       <% end %>
     </ul>
