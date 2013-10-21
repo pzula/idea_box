@@ -121,6 +121,16 @@ textarea {
             font-size:3em;
         }
 
+            h1 a {
+                color:#222;
+                text-decoration: none;
+            }
+
+            h1 a:hover {
+                color:#787878;
+                text-decoration: underline;
+            }
+
         .tagline {
             display: block;
             padding-top:55px;
