@@ -1,17 +1,17 @@
 ---
 ideas:
-- id: 1
-  title: A new idea
-  description: With fresh tags
-  rank: 1
-  tags: tag_1,tag_2
 - id: 2
   title: Another idea
   description: to test tags
-  rank: 1
+  rank: 2
   tags: again,you_know,yeah
 - id: 3
   title: New idea again
   description: another new idea
   rank: 2
   tags: new_tag,new_idea,tag_1
+- title: a new
+  description: idea
+  tags: has_tag, tag_2
+  id: 3
+  rank: 0

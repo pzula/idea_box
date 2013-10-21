@@ -10,7 +10,7 @@
 
     <ul class="ideas">
       <% ideas.each do |idea| %>
-        <li>
+        <li id="idea_<%= idea.id %>">
           <div class="idea_content">
             <span class="title"><%= idea.title %></span><br/>
             <span class="description"><%= idea.description %></span><br/>

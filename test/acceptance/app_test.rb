@@ -10,6 +10,10 @@ class AppTest < MiniTest::Unit::TestCase
     IdeaBoxApp
   end
 
+  def teardown
+    IdeaStore.destroy
+  end
+
   def test_it_exists
     assert IdeaBoxApp
   end
@@ -44,6 +48,20 @@ class AppTest < MiniTest::Unit::TestCase
     assert_equal "costume", idea.title
     assert_equal "scary vampire", idea.description
   end
+
+  def test_edit_idea
+    skip
+    idea = IdeaStore.create Idea.new({'title' => 'sing', 'description' => 'happy songs'}).to_h
+
+    put "/#{idea}", idea: {title: 'yodle', description: 'joyful songs'}
+
+    assert_equal 302, last_response.status
+
+    idea = IdeaStore.find(id)
+    assert_equal 'yodle', idea.title
+    assert_equal 'joyful songs', idea.description
+  end
+
 
 
 
