@@ -38,6 +38,11 @@ class IdeaBoxApp < Sinatra::Base
     erb :tag, locals: {ideas: ideas, tag: tag}
   end
 
+  get '/search/results' do
+    ideas = IdeaStore.search(params[:phrase])
+    erb :search, locals: {ideas: ideas, phrase: params[:phrase]}
+  end
+
   put '/:id' do |id|
     IdeaStore.update(id.to_i, params[:idea])
     redirect '/'

@@ -1,6 +1,11 @@
 
     <%= erb :form, locals: {idea: idea} %>
 
+    <form action='/search/results' method='GET'>
+      <input type="text" name="phrase" value="">
+      <input type="submit" value="search" />
+    </form>
+
     <h3>Existing Ideas</h3>
 
     <ul class="ideas">
