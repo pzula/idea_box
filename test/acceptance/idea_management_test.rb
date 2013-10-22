@@ -71,8 +71,15 @@ class IdeaManagementTest < MiniTest::Unit::TestCase
         refute page.has_content?("chocolate chip cookies"), "Original idea is on page still"
 
         # Delete the idea
+        within("#idea_#{idea.id}") do
+          find(".delete").click
+        end
 
+        refute page.has_content?("chocolate chip oatmeal cookies"), "Updated idea is not on page"
 
+        # Decoys are untouched
+        assert page.has_content?("buy more socks"), "Decoy idea (socks) is not on page after delete"
+        assert page.has_content?("macaroni, cheese"), "Decoy idea (macaroni) is not on page after delete"
 
   end
 end
