@@ -1,10 +1,10 @@
 ---
 ideas:
 - id: 1
+  rank: 2
   title: a new
   description: idea
-  rank: 2
-  tags: new_idea,ideas
+  tags: new_idea, ideas, fun, sparks
 - id: 2
   title: second idea
   description: idea

@@ -40,25 +40,27 @@ class AppTest < MiniTest::Unit::TestCase
   end
 
   def test_create_idea
-    post '/', idea: {title: 'costume', description: "scary vampire"}
+    post '/', idea: {title: 'costume', description: "scary vampire", tags: "fun, idea"}
 
     assert_equal 1, IdeaStore.all.count
 
     idea = IdeaStore.all.first
     assert_equal "costume", idea.title
     assert_equal "scary vampire", idea.description
+    assert_equal ["fun", "idea"], idea.tags
   end
 
   def test_edit_idea
     IdeaStore.create({'title' => 'sing', 'description' => 'happy songs'})
     idea = IdeaStore.all.first
-    put "/#{idea.id}", idea: {title: 'yodle', description: 'joyful songs'}
+    put "/#{idea.id}", idea: {title: 'yodle', description: 'joyful songs', tags: 'songs'}
 
     assert_equal 302, last_response.status
 
     idea = IdeaStore.find(idea.id)
     assert_equal 'yodle', idea.title
     assert_equal 'joyful songs', idea.description
+    assert_equal ['songs'], idea.tags
   end
 
   def test_delete_idea
@@ -71,6 +73,15 @@ class AppTest < MiniTest::Unit::TestCase
     assert_equal 302, last_response.status
     assert_equal 0, IdeaStore.all.count
   end
+
+  def test_search_results
+    IdeaStore.create({'title' => 'breathe', 'description' => 'fresh air in the mountains'})
+
+    get '/search/results?phrase=fresh+air'
+
+    assert_match /fresh air/, last_response.body
+  end
+
 
 
 end

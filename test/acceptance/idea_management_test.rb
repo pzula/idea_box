@@ -117,6 +117,22 @@ class IdeaManagementTest < MiniTest::Unit::TestCase
     assert_match /ride horses/, ideas[2].text
   end
 
+  def test_searching
+    # Create a couple of decoys
+    # This is so we know we're editing the right thing later
+    IdeaStore.create({"title" => "laundry", "description" => "buy more socks"})
+    IdeaStore.create({"title" => "groceries", "description" => "macaroni, cheese"})
+
+    # Create an idea
+      visit '/'
+
+    # Fill the search
+      fill_in 'phrase', :with => 'buy more'
+      click_button 'search'
+
+      assert page.has_content?("All ideas with the search phrase \"buy more\" " ), "Search page is not functioning"
+  end
+
 
 
 end
