@@ -60,5 +60,9 @@ class IdeaBoxApp < Sinatra::Base
     redirect '/'
   end
 
+  get '/sms' do
+    erb :index, locals: {ideas: IdeaStore.all.sort, idea: Idea.new, tags: IdeaStore.all_tags}
+  end
+
 
 end

@@ -15,15 +15,18 @@ class AppTest < MiniTest::Unit::TestCase
   end
 
   def test_it_exists
+    skip
     assert IdeaBoxApp
   end
 
   def test_homepage_route_returns_ok
+    skip
     get '/'
     assert last_response.ok?
   end
 
   def test_idea_list
+    skip
     IdeaStore.create({"title" => "dinner", "description" => "spaghetti and meatballs"})
     IdeaStore.create({"title" => "drinks", "description" => "imported beers"})
     IdeaStore.create({"title" => "movie", "description" => "The Matrix"})
@@ -40,6 +43,7 @@ class AppTest < MiniTest::Unit::TestCase
   end
 
   def test_create_idea
+    skip
     post '/', idea: {title: 'costume', description: "scary vampire", tags: "fun, idea"}
 
     assert_equal 1, IdeaStore.all.count
@@ -51,6 +55,7 @@ class AppTest < MiniTest::Unit::TestCase
   end
 
   def test_edit_idea
+    skip
     IdeaStore.create({'title' => 'sing', 'description' => 'happy songs'})
     idea = IdeaStore.all.first
     put "/#{idea.id}", idea: {title: 'yodle', description: 'joyful songs', tags: 'songs'}
@@ -64,6 +69,7 @@ class AppTest < MiniTest::Unit::TestCase
   end
 
   def test_delete_idea
+    skip
     IdeaStore.create({'title' => 'breathe', 'description' => 'fresh air in the mountains'})
     idea = IdeaStore.all.first
     assert_equal 1, IdeaStore.all.count
@@ -75,11 +81,27 @@ class AppTest < MiniTest::Unit::TestCase
   end
 
   def test_search_results
+    skip
     IdeaStore.create({'title' => 'breathe', 'description' => 'fresh air in the mountains'})
 
     get '/search/results?phrase=fresh+air'
 
     assert_match /fresh air/, last_response.body
+  end
+
+  def test_an_idea_can_be_created_via_sms
+    # assert_equal 0, IdeaStore.all.count
+
+    # url = '/sms'
+    params = {"Body" => "Breathe, fresh air in the mountains # outdoors, air, colorado"}
+
+    get '/sms'
+
+    # assert_equal 1, IdeaStore.all.count
+    # idea = IdeaStore.all.last
+    # assert_equal "Breathe", idea.title
+    # assert_equal "fresh air in the mountains", idea.description
+    # assert_equal ["outdoors", "air", "colorado"], idea.tags
   end
 
 
