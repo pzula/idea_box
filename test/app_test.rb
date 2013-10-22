@@ -61,7 +61,16 @@ class AppTest < MiniTest::Unit::TestCase
     assert_equal 'joyful songs', idea.description
   end
 
+  def test_delete_idea
+    IdeaStore.create({'title' => 'breathe', 'description' => 'fresh air in the mountains'})
+    idea = IdeaStore.all.first
+    assert_equal 1, IdeaStore.all.count
 
+    delete "/#{idea.id}"
+
+    assert_equal 302, last_response.status
+    assert_equal 0, IdeaStore.all.count
+  end
 
 
 end

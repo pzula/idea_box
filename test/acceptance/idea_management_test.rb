@@ -80,6 +80,43 @@ class IdeaManagementTest < MiniTest::Unit::TestCase
         # Decoys are untouched
         assert page.has_content?("buy more socks"), "Decoy idea (socks) is not on page after delete"
         assert page.has_content?("macaroni, cheese"), "Decoy idea (macaroni) is not on page after delete"
-
   end
+
+  def test_ranking_ideas
+    IdeaStore.create({"title" => "fun", "description" => "ride horses"})
+    IdeaStore.create({"title" => "vacation", "description" => "camping in the mountains"})
+    IdeaStore.create({"title" => "write", "description" => "a book about being brave"})
+
+    visit '/'
+
+    idea = IdeaStore.all[1]
+    idea.like!
+    idea.like!
+    idea.like!
+    idea.like!
+    idea.like!
+
+    id1 = IdeaStore.all[0]
+    id2 = IdeaStore.all[1]
+    id3 = IdeaStore.all[2]
+
+    within("#idea_#{id2.id}") do
+      3.times do
+        find(".like").click
+      end
+    end
+
+    within("#idea_#{id3.id}") do
+      find(".like").click
+    end
+
+    # now check that the order is correct
+    ideas = page.all('li')
+    assert_match /camping in the mountains/, ideas[0].text
+    assert_match /a book about being brave/, ideas[1].text
+    assert_match /ride horses/, ideas[2].text
+  end
+
+
+
 end
