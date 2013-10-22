@@ -15,7 +15,7 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/' do
-    erb :index, locals: {ideas: IdeaStore.all, idea: Idea.new}
+    erb :index, locals: {ideas: IdeaStore.all.sort, idea: Idea.new}
   end
 
   post '/' do
