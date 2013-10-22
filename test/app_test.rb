@@ -50,14 +50,13 @@ class AppTest < MiniTest::Unit::TestCase
   end
 
   def test_edit_idea
-    skip
-    idea = IdeaStore.create Idea.new({'title' => 'sing', 'description' => 'happy songs'}).to_h
-
-    put "/#{idea}", idea: {title: 'yodle', description: 'joyful songs'}
+    IdeaStore.create({'title' => 'sing', 'description' => 'happy songs'})
+    idea = IdeaStore.all.first
+    put "/#{idea.id}", idea: {title: 'yodle', description: 'joyful songs'}
 
     assert_equal 302, last_response.status
 
-    idea = IdeaStore.find(id)
+    idea = IdeaStore.find(idea.id)
     assert_equal 'yodle', idea.title
     assert_equal 'joyful songs', idea.description
   end
