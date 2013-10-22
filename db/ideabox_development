@@ -15,3 +15,8 @@ ideas:
   description: idea
   rank: 1
   tags: best_idea,another
+- title: title
+  description: description
+  tags: tag_1, tag_2
+  id: 4
+  rank: 0
