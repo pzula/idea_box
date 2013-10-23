@@ -33,10 +33,6 @@ class IdeaBoxApp < Sinatra::Base
     erb :edit, locals: {idea: idea}
   end
 
-  get '/:id' do |id|
-    idea = IdeaStore.find(id.to_i)
-    erb :idea, locals: {idea: idea}
-  end
 
   get '/tag/:tag' do |tag|
     ideas = IdeaStore.find_all_by_tag(tag)
@@ -61,7 +57,19 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/sms' do
-    erb :index, locals: {ideas: IdeaStore.all.sort, idea: Idea.new, tags: IdeaStore.all_tags}
+    title, description_tags = params[:Body].split(" :: ")
+    description, tags = description_tags.split(" # ")
+    attributes = {"title" => title, "description" => description, "tags" => tags}
+
+    IdeaStore.create(attributes)
+    redirect '/'
+    # send a text to the number using title :: description # tag, tag, tag
+  end
+
+  get '/:id' do |id|
+    idea = IdeaStore.find(id.to_i)
+    erb :idea, locals: {idea: idea}
+    # put a restriction on id --- a greedy route
   end
 
 

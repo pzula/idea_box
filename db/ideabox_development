@@ -20,3 +20,18 @@ ideas:
   tags: tag_1, tag_2
   id: 4
   rank: 0
+- title: A sweet idea
+  description: generated on the go
+  tags: mobile
+  id: 5
+  rank: 0
+- title: Ladies night
+  description: no guys allowed
+  tags: wine, cheese, party
+  id: 6
+  rank: 0
+- title: A mobile
+  description: idea
+  tags: tags
+  id: 7
+  rank: 0

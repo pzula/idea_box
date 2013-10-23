@@ -90,18 +90,18 @@ class AppTest < MiniTest::Unit::TestCase
   end
 
   def test_an_idea_can_be_created_via_sms
-    # assert_equal 0, IdeaStore.all.count
+    assert_equal 0, IdeaStore.all.count
 
-    # url = '/sms'
-    params = {"Body" => "Breathe, fresh air in the mountains # outdoors, air, colorado"}
+    url = '/sms'
+    params = {"Body" => "Breathe :: fresh air in the mountains # outdoors, air, colorado"}
 
-    get '/sms'
+    get url, params
 
-    # assert_equal 1, IdeaStore.all.count
-    # idea = IdeaStore.all.last
-    # assert_equal "Breathe", idea.title
-    # assert_equal "fresh air in the mountains", idea.description
-    # assert_equal ["outdoors", "air", "colorado"], idea.tags
+    assert_equal 1, IdeaStore.all.count
+    idea = IdeaStore.all.last
+    assert_equal "Breathe", idea.title
+    assert_equal "fresh air in the mountains", idea.description
+    assert_equal ["outdoors", "air", "colorado"], idea.tags
   end
 
 
