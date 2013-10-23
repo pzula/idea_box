@@ -35,3 +35,13 @@ ideas:
   tags: tags
   id: 7
   rank: 0
+- id: 8
+  title: An awesome idea
+  description: for making squash
+  rank: 3
+  tags: dinner
+- id: 9
+  rank: 4
+  title: I need lovin
+  description: Meet me under the full moon, so we can swoon, and make a tune!
+  tags: makinlovin
