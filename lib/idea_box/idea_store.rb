@@ -40,7 +40,8 @@ class IdeaStore
 
   def self.search(phrase)
     all.select do |idea|
-      idea.title.match(/#{phrase.downcase}/i) || idea.description.match(/#{phrase.downcase}/i) || idea.tags.join(",").match(/#{phrase.downcase}/i)
+      regex = /#{phrase.downcase}/i
+      idea.title.match(regex) || idea.description.match(regex) || idea.tags.join(",").match(regex)
     end
   end
 
