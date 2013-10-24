@@ -39,8 +39,8 @@
       <% ideas.each do |idea| %>
         <li id="idea_<%= idea.id %>">
           <div class="idea_content">
-            <span class="title"><a href="/<%= idea.id %>"><%= idea.title %></a></span><br/>
-            <span class="description"><%= idea.description[0..30] %>... <a href="/<%= idea.id %>" class="read_more">(read more &raquo;)</a></span><br/>
+            <span class="title"><a href="/<%= idea_path(idea) %>"><%= idea.title %></a></span><br/>
+            <span class="description"><%= idea.description[0..30] %>... <a href="/<%= idea_path(idea) %>" class="read_more">(read more &raquo;)</a></span><br/>
             <ul class="tags">
               <% idea.tags.each do |tag| %>
                   <li><a href='/tag/<%= tag %>' class='tag'><%= tag %></a></li>
@@ -48,14 +48,14 @@
             </ul>
           </div>
           <div class="idea_controls">
-            <form action="/<%= idea.id %>" method="POST">
+            <form action="/<%= idea_path(idea) %>" method="POST">
               <input type="hidden" name="_method" value="DELETE">
               <input type="submit" class="delete" value="" />
             </form>
 
-            <a href="/<%= idea.id %>/edit" class="edit"></a>
+            <a href="/<%= idea_path(idea) %>/edit" class="edit"></a>
 
-            <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
+            <form action='/<%= idea_path(idea) %>/like' method='POST' style="display: inline">
               <input type='submit' class="like" value=""/>
             </form>
           </div>

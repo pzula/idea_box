@@ -1,10 +1,14 @@
-<form action='/<%= idea.id %>' method='POST'>
+
   <% if idea.id %>
+
   <span class="title">Edit your Idea:</span>
+  <form action='/<%= idea_path(idea) %>' method='POST'>
   <% else %>
+  <form action='/<%= idea_path %>' method='POST'>
   <span class="title">Your Best Idea:</span>
   <% end %>
   <% if idea.id %>
+  
  	<input type="hidden" name="_method" value="PUT" />
   <input type="hidden" name="idea[id]" value="<%= idea.id %>" />
   <input type="hidden" name="idea[rank]" value="<%= idea.rank %>" />

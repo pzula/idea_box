@@ -15,11 +15,11 @@ ideas:
   title: Bike ride
   description: Mountain biking down Pike's Peak
   tags: fun, outdoors
-- title: RSVP for dinner
-  description: At the swanky wine bar down the road
+- id: 4
+  rank: 1
+  title: RSVP for dinner
+  description: At the swanky wine bar down Speer
   tags: dinner, fun, party
-  id: 4
-  rank: 0
 - title: Buy a pig
   description: For the pig roast this Saturday
   tags: bacon, pig, bbq
@@ -30,8 +30,18 @@ ideas:
   tags: corn, harvest
   id: 6
   rank: 0
-- title: Hey
-  description: persa! What's up!
-  tags: pikes peak, ladiesonly, pigroast
+- title: Eat squash
+  description: and roasted pine nuts with wine
+  tags: dinner
   id: 7
+  rank: 0
+- id: 9
+  rank: 0
+  title: build a radio
+  description: App way better than pandora
+  tags: app, radio, better
+- title: Build an app
+  description: For toots
+  tags: potty_humor
+  id: 9
   rank: 0
