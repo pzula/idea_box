@@ -1,47 +1,32 @@
 ---
 ideas:
-- id: 1
-  rank: 2
-  title: a new
-  description: idea
-  tags: new_idea, ideas, fun, sparks
-- id: 2
-  title: second idea
-  description: idea
-  rank: 2
-  tags: idea
-- id: 3
-  title: fine idea
-  description: idea
-  rank: 1
-  tags: best_idea,another
-- title: title
-  description: description
-  tags: tag_1, tag_2
+- id: 5
+  rank: 0
+  title: A sweet idea
+  description: generated on the go from my mobie phone
+  tags: mobile
+- id: 6
+  rank: 0
+  title: Ladies night
+  description: no guys allowed! food and funny movies!
+  tags: wine, cheese, party
+- id: 8
+  rank: 0
+  title: Bike ride
+  description: Mountain biking down Pike's Peak
+  tags: fun, outdoors
+- title: RSVP for dinner
+  description: At the swanky wine bar down the road
+  tags: dinner, fun, party
   id: 4
   rank: 0
-- title: A sweet idea
-  description: generated on the go
-  tags: mobile
+- title: Buy a pig
+  description: For the pig roast this Saturday
+  tags: bacon, pig, bbq
   id: 5
   rank: 0
-- title: Ladies night
-  description: no guys allowed
-  tags: wine, cheese, party
+- title: Harvest the corn
+  description: From the front field in rows 28-45
+  tags: corn, harvest
   id: 6
   rank: 0
-- title: A mobile
-  description: idea
-  tags: tags
-  id: 7
-  rank: 0
-- id: 8
-  title: An awesome idea
-  description: for making squash
-  rank: 3
-  tags: dinner
-- id: 9
-  rank: 4
-  title: I need lovin
-  description: Meet me under the full moon, so we can swoon, and make a tune!
-  tags: makinlovin

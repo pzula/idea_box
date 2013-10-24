@@ -159,6 +159,7 @@ textarea {
             margin-right:1%;
             padding:1.5% 2%;
             overflow: hidden;
+            margin-bottom:15px;
         }
 
             .idea_content {
@@ -179,6 +180,10 @@ textarea {
                         list-style:none;
                     }
 
+                        a.read_more {
+                            font-size:10px;
+                        }
+
                         .idea_content ul.tags li, .idea_content ul.tags a {
                             width:auto;
                             float:left;
@@ -188,6 +193,8 @@ textarea {
                             line-height:24px;
                             position:relative;
                             font-size:11px;
+                            padding:0;
+                            margin-bottom: 5px;
                         }
 
                             .idea_content ul.tags a {

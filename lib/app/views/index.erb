@@ -13,7 +13,7 @@
         <li id="idea_<%= idea.id %>">
           <div class="idea_content">
             <span class="title"><a href="/<%= idea.id %>"><%= idea.title %></a></span><br/>
-            <span class="description"><%= idea.description %></span><br/>
+            <span class="description"><%= idea.description[0..30] %>... <a href="/<%= idea.id %>" class="read_more">(read more &raquo;)</a></span><br/>
             <ul class="tags">
               <% idea.tags.each do |tag| %>
                   <li><a href='/tag/<%= tag %>' class='tag'><%= tag %></a></li>
