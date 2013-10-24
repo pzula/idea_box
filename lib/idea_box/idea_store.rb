@@ -4,7 +4,6 @@ require './lib/idea_box/idea'
 class IdeaStore
 
   def self.create(data)
-    id = next_id
     data["id"] = next_id if data["id"].nil?
     data["rank"] = 0 if data["rank"].nil?
     database.transaction do
@@ -20,10 +19,8 @@ class IdeaStore
 
   def self.all_tags
     all.map do |idea|
-      idea.tags.map do |tag|
-        tag
-      end
-    end.flatten.sort.uniq
+      idea.tags
+    end.flatten.uniq.sort
   end
 
   def self.next_id
@@ -43,7 +40,7 @@ class IdeaStore
 
   def self.search(phrase)
     all.select do |idea|
-      idea.title.downcase.match(/#{phrase.downcase}/) || idea.description.downcase.match(/#{phrase.downcase}/) || idea.tags.join(",").downcase.match(/#{phrase.downcase}/)
+      idea.title.match(/#{phrase.downcase}/i) || idea.description.match(/#{phrase.downcase}/i) || idea.tags.join(",").match(/#{phrase.downcase}/i)
     end
   end
 
