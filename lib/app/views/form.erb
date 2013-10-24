@@ -1,11 +1,9 @@
 <form action='/<%= idea.id %>' method='POST'>
-  <p>
   <% if idea.id %>
-  Edit your Idea:
+  <span class="title">Edit your Idea:</span>
   <% else %>
-  Your Idea:
+  <span class="title">Your Best Idea:</span>
   <% end %>
-  </p>
   <% if idea.id %>
  	<input type="hidden" name="_method" value="PUT" />
   <input type="hidden" name="idea[id]" value="<%= idea.id %>" />

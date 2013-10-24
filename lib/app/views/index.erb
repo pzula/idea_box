@@ -1,10 +1,37 @@
 
-    <%= erb :form, locals: {idea: idea} %>
+    <div class="top">
+      <div class="ideation">
+        <%= erb :form, locals: {idea: idea} %>
+      </div>
 
-    <form action='/search/results' method='GET'>
-      <input type="text" name="phrase" value="">
-      <input type="submit" value="search" />
-    </form>
+      <div class="mobile">
+        <span class="title">Pro Tip</span>
+        <p>On the go? Use your mobile phone <br>to
+          send in an idea whenever <br>you're on the road.
+          Send a text message to <span class="highlight">330-754-3184</span><br> with this
+          syntax: <br><span class="highlight">title :: description # tag, tag, tag</span> </p>
+      </div>
+
+      <div class="helper_navigation">
+        <form action='/search/results' method='GET' class="search">
+          <input type="text" name="phrase" value="">
+          <input type="submit" value="search" />
+        </form>
+
+        <div id="all_tags">
+          <p>All tags</p>
+          <div class="tag_wrapper">
+            <ul class="tags">
+            <% tags.each do |tag| %>
+              <li><a href="/tag/<%=tag %>" class="tag"><%= tag %></a></li>
+            <% end %>
+            </ul>
+            </div>
+        </div>
+      </div>
+
+
+    </div>
 
     <h3>Existing Ideas</h3>
 
@@ -36,12 +63,5 @@
       <% end %>
     </ul>
 
-    <div id="all_tags">
-      All tags
-      <ul class="tags">
-      <% tags.each do |tag| %>
-        <li><a href="/tag/<%=tag %>"><%= tag %></a></li>
-      <% end %>
-      </ul>
-    </div>
+
 
