@@ -4,11 +4,27 @@ require './lib/idea_box/idea'
 class IdeaStore
 
   def self.create(data)
-    data["id"] = next_id if data["id"].nil?
-    data["rank"] = 0 if data["rank"].nil?
+    assign_new_id(data) if new_idea?(data).nil?
+    assign_default_rank(data) if has_no_rank?(data)
     database.transaction do
       database['ideas'] << data
     end
+  end
+
+  def self.assign_new_id(data)
+    data["id"] = next_id
+  end
+
+  def self.new_idea?(data)
+    data["id"]
+  end
+
+  def self.assign_default_rank(data)
+    data["rank"] = 0
+  end
+
+  def self.has_no_rank?(data)
+    data["rank"].nil?
   end
 
   def self.all
@@ -76,7 +92,6 @@ class IdeaStore
 
   def self.database
     return @database if @database
-
     @database =  YAML::Store.new("db/ideabox_#{environment}")
     @database.transaction do
       @database['ideas'] ||= []
