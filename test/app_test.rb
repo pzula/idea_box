@@ -40,7 +40,7 @@ class AppTest < MiniTest::Unit::TestCase
   end
 
   def test_create_idea
-    post '/', idea: {title: 'costume', description: "scary vampire", tags: "fun, idea"}
+    post '/ideas', idea: {title: 'costume', description: "scary vampire", tags: "fun, idea"}
 
     assert_equal 1, IdeaStore.all.count
 
@@ -53,7 +53,7 @@ class AppTest < MiniTest::Unit::TestCase
   def test_edit_idea
     IdeaStore.create({'title' => 'sing', 'description' => 'happy songs'})
     idea = IdeaStore.all.first
-    put "/#{idea.id}", idea: {title: 'yodle', description: 'joyful songs', tags: 'songs'}
+    put "/ideas/#{idea.id}", idea: {title: 'yodle', description: 'joyful songs', tags: 'songs'}
 
     assert_equal 302, last_response.status
 
@@ -68,7 +68,7 @@ class AppTest < MiniTest::Unit::TestCase
     idea = IdeaStore.all.first
     assert_equal 1, IdeaStore.all.count
 
-    delete "/#{idea.id}"
+    delete "/ideas/#{idea.id}"
 
     assert_equal 302, last_response.status
     assert_equal 0, IdeaStore.all.count
