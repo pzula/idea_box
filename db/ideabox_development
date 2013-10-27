@@ -1,10 +1,5 @@
 ---
 ideas:
-- id: 5
-  rank: 0
-  title: A sweet idea
-  description: generated on the go from my mobile phone
-  tags: mobile
 - id: 6
   title: Ladies night
   description: no guys allowed! food and funny movies!
@@ -15,11 +10,6 @@ ideas:
   title: Bike ride
   description: Mountain biking down Pike's Peak
   tags: fun, outdoors
-- id: 4
-  rank: 1
-  title: RSVP for dinner
-  description: At the swanky wine bar down Speer
-  tags: dinner, fun, party
 - title: Buy a pig
   description: For the pig roast this Saturday
   tags: bacon, pig, bbq
@@ -44,4 +34,9 @@ ideas:
   description: For toots
   tags: potty_humor
   id: 9
+  rank: 0
+- title: Ideabox
+  description: gSchool gather takeover
+  tags: get, it, done
+  id: 10
   rank: 0
